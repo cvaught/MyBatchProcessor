@@ -191,7 +191,8 @@ namespace MyBatchProcessor.AppObjects
                 {
                     if (cfg == null)
                     {
-                        doc.DeleteCustomProperty(name);
+                        if (doc.DeleteCustomProperty(name))
+                            result = true;
                     }
                     else if (cfg.DeleteCustomProperty(name))
                     {

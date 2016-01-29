@@ -290,8 +290,9 @@ namespace MyBatchProcessor
                 task = new MassOutput(this.textBox_path.Text, msg);
             }
             else if (TaskObject.isClearPropertyTaskSelected(this.tabControl1.SelectedIndex))
+            {
                 task = new ClearProperty(this.textBox_path.Text, AppObject.determineAppID(comboBox1.SelectedIndex), msg);
-
+            }
             return task;
         }
 
