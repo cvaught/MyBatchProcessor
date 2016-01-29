@@ -144,6 +144,63 @@ namespace MyBatchProcessor.AppObjects
             return false;
         }
 
+        public override bool clearProperty()
+        {
+            Boolean result = false;
+            if (doc != null)
+            {
+                try
+                {
+                    Array docNames = doc.GetCustomPropertyNames();
+                    Boolean didClear = this.clearProperty(docNames, null);
+
+                    SwDMConfigurationMgr configMgr = doc.ConfigurationManager;
+                    if (configMgr != null && configMgr.GetConfigurationCount() > 0)
+                    {
+                        Array array = configMgr.GetConfigurationNames();
+                        foreach (object obj in array)
+                        {
+                            try
+                            {
+                                SwDMConfiguration14 cfg = (SwDMConfiguration14)configMgr.GetConfigurationByName((string)obj);
+                                String configuration = cfg.Name;
+                                Array names = cfg.GetCustomPropertyNames();
+                                Boolean clearResult = this.clearProperty(names, cfg);
+                                if (clearResult)
+                                    didClear = true;
+                            }
+                            catch { }
+                        }
+                    }
+
+                    if (didClear)
+                        doc.Save();
+                    result = true;
+                }
+                catch { }
+            }
+            return result;
+        }
+
+        private Boolean clearProperty(Array names, SwDMConfiguration14 cfg)
+        {
+            Boolean result = false;
+            if (names != null && names.Length > 0)
+            {
+                foreach (String name in names)
+                {
+                    if (cfg == null)
+                    {
+                        doc.DeleteCustomProperty(name);
+                    }
+                    else if (cfg.DeleteCustomProperty(name))
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+        }
 
         public override Boolean calculateMass(FileObj currentFile)
         {

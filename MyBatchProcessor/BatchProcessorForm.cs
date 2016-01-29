@@ -69,7 +69,7 @@ namespace MyBatchProcessor
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 1)
+            if (tabControl1.SelectedIndex == 1 || tabControl1.SelectedIndex == 2)
                 comboBox1.SelectedIndex = 0;
         }
 
@@ -289,6 +289,9 @@ namespace MyBatchProcessor
             {
                 task = new MassOutput(this.textBox_path.Text, msg);
             }
+            else if (TaskObject.isClearPropertyTaskSelected(this.tabControl1.SelectedIndex))
+                task = new ClearProperty(this.textBox_path.Text, AppObject.determineAppID(comboBox1.SelectedIndex), msg);
+
             return task;
         }
 

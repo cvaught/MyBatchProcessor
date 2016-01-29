@@ -69,6 +69,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskObjects\MassOutput.cs" />
+    <Compile Include="TaskObjects\ClearProperty.cs" />
     <Compile Include="TaskObjects\PropertyUpdate.cs" />
     <Compile Include="TaskObjects\TaskObject.cs" />
     <EmbeddedResource Include="BatchProcessorForm.resx">

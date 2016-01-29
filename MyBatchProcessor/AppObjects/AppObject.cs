@@ -19,6 +19,7 @@ namespace MyBatchProcessor.AppObjects
 
         public abstract Boolean updateProperty(String name, String value);
         public abstract Boolean calculateMass(FileObj fileObj);
+        public abstract Boolean clearProperty();
 
         public static int determineAppID(int boxIndex)
         {

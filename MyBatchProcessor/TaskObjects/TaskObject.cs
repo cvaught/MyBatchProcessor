@@ -35,6 +35,11 @@ namespace MyBatchProcessor.TaskObjects
             return (tabIndex == 0);
         }
 
+        public static Boolean isClearPropertyTaskSelected(int tabIndex)
+        {
+            return (tabIndex == 2);
+        }
+
         #endregion
 
         #region Process File Input

@@ -86,6 +86,11 @@ namespace MyBatchProcessor.AppObjects
             throw new NotImplementedException();
         }
 
+        public override bool clearProperty()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Detail Property Methods
